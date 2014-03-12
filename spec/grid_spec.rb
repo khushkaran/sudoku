@@ -24,8 +24,12 @@ describe Grid do
     end
 
     context 'neighbours' do
-      it "can knows which box it is in" do
+      it "knows which box it is in" do
         expect(grid.current_box(30)).to eq([30,31,32,39,40,41,48,49,50])
+      end
+
+      it "knows which row it is in" do
+        expect(grid.current_row(30)).to eq([27,28,29,30,31,32,33,34,35])
       end
   end
 
