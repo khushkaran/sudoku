@@ -1,10 +1,9 @@
 class Cell
 
-  attr_accessor :value
+  attr_accessor :value, :neighbours
 
-  def initialize#(neighbours)
-    #@neighbours = neighbours #array of cells
-    @value = nil
+  def initialize(neighbours = [])
+    @neighbours = neighbours
   end
 
   # returns true if the cell is filled out, false otherwise

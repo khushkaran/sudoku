@@ -1,4 +1,4 @@
-require "./lib/grid"
+require "grid"
 
 describe Grid do
   context 'initialization' do
@@ -19,4 +19,5 @@ describe Grid do
     end
 
   end
+
 end
