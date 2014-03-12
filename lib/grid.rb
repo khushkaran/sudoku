@@ -49,8 +49,14 @@ class Grid
   end
 
   def current_row(index)
-    ROWS.each{|box|
-      return box if box.include?(index)
+    ROWS.each{|row|
+      return row if row.include?(index)
+    }
+  end
+
+  def current_column(index)
+    ROWS.transpose.each{|column|
+      return column if column.include?(index)
     }
   end
 

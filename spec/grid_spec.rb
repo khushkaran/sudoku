@@ -31,6 +31,10 @@ describe Grid do
       it "knows which row it is in" do
         expect(grid.current_row(30)).to eq([27,28,29,30,31,32,33,34,35])
       end
+
+      it "knows which column it is in" do
+        expect(grid.current_column(30)).to eq([3,12,21,30,39,48,57,66,75])
+      end
   end
 
 end
