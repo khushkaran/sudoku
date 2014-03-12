@@ -13,6 +13,7 @@ class Cell
     # 0 as the "unsolved" value for the cell. This way
     # you won't have to differentiate between numbers and nil
     # values when you calculate neighbours.
+    self.value != 0 ? false : true
   end
 
   def candidates

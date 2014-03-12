@@ -8,5 +8,10 @@ describe Grid do
     it "should have 81 cells" do
        expect(grid.cells.count).to eq(81)
     end
+
+    it 'should have an unsolved first cell' do
+      expect(grid.cells[0].filled_out?).to eq(false)
+    end
+
   end
 end

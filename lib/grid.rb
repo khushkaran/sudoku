@@ -6,7 +6,11 @@ class Grid
 
   def initialize(initial_values)
     @cells = []
-    81.times{@cells << Cell.new}
+    (0..80).each_with_index{|x,i|
+      cell = Cell.new
+      cell.value = initial_values[i]
+      @cells << cell
+    }
   end
 
   def solve
