@@ -1,17 +1,24 @@
 require_relative './cell'
 
 class Grid
+  FORMULA = [-10,-9,-8,-1,1,8,9,10]
 
   attr_reader :cells
 
   def initialize(initial_values)
-    @cells = []
-    (0..80).each_with_index{|x,i|
+    @cells = [] ; i = 0
+    81.times{
       cell = Cell.new
       cell.value = initial_values[i].to_i
       @cells << cell
+      i += 1
     }
   end
+
+  def neighbours_of(index)
+    FORMULA.map{|adder|index+adder}
+  end
+
 
   def solve
     # outstanding_before, looping = SIZE, false
@@ -27,8 +34,8 @@ class Grid
     # a grid if solved if all cells are filled out. Use .all? method
   end
 
-  def inspect
-    # iterate over all cells and print the grid
-  end
+  # def inspect
+  #    # iterate over all cells and print the grid
+  # end
 
 end
