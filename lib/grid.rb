@@ -40,6 +40,8 @@ class Grid
   end
 
   def neighbours_of(index)
+    result = current_box(index) + current_row(index) + current_column(index)
+    result.uniq
   end
 
   def current_box(index)

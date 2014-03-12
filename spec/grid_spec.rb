@@ -35,6 +35,10 @@ describe Grid do
       it "knows which column it is in" do
         expect(grid.current_column(30)).to eq([3,12,21,30,39,48,57,66,75])
       end
+
+      it "knows an indexes neighbours" do
+        expect(grid.neighbours_of(30)).to eq([30,31,32,39,40,41,48,49,50,27,28,29,33,34,35,3,12,21,57,66,75])
+      end
   end
 
 end
