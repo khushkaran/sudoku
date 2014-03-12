@@ -6,6 +6,7 @@ class Grid
   attr_reader :cells
 
   def initialize(initial_values)
+    # @cells = initial_values.chars.each_slice(9).to_a
     @cells = [] ; i = 0
     81.times{
       cell = Cell.new
@@ -13,10 +14,11 @@ class Grid
       @cells << cell
       i += 1
     }
+    @cells = @cells.each_slice(9).to_a
   end
 
   def neighbours_of(index)
-    FORMULA.map{|adder|index+adder}
+    
   end
 
 
