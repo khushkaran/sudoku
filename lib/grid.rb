@@ -8,7 +8,7 @@ class Grid
     @cells = []
     (0..80).each_with_index{|x,i|
       cell = Cell.new
-      cell.value = initial_values[i]
+      cell.value = initial_values[i].to_i
       @cells << cell
     }
   end

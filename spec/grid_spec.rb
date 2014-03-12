@@ -13,5 +13,10 @@ describe Grid do
       expect(grid.cells[0].filled_out?).to eq(false)
     end
 
+    it 'should have a solved second cell with value 1' do
+      expect(grid.cells[1].filled_out?).to eq(true)
+      expect(grid.cells[1].value).to eq(1)
+    end
+
   end
 end
