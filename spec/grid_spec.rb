@@ -24,12 +24,8 @@ describe Grid do
     end
 
     context 'neighbours' do
-      xit "can calculate a neighbour" do
-        expect(grid.neighbours_of(13)).to eq([3,4,5,12,14,21,22,23])
-      end
-
-      xit 'can calculate another neighbour' do
-        expect(grid.neighbours_of(8)).to eq([])
+      it "can knows which box it is in" do
+        expect(grid.neighbours_of(30)).to eq([30,31,32,39,40,41,48,49,50])
       end
   end
 
