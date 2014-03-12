@@ -28,13 +28,12 @@ class Grid
   end
 
   def neighbours_of(index)
-    BOXES.each{|box|
-      return box if box.include?(index)
-    }
   end
 
   def current_box(index)
-    
+    BOXES.each{|box|
+      return box if box.include?(index)
+    }
   end
 
   def solve
