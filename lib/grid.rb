@@ -2,16 +2,11 @@ require_relative './cell'
 
 class Grid
   ROWS = (0...81).each_slice(9).to_a
-
   attr_reader :cells
 
   def initialize(initial_values)
     @cells = [] ; i = 0
-    81.times{
-      cell = Cell.new([neighbours_of(i)],initial_values[i].to_i)
-      @cells << cell
-      i += 1
-    }
+    81.times{ @cells << Cell.new([neighbours_of(i)],initial_values[i].to_i); i += 1 }
     @cells = @cells.each_slice(9).to_a
   end
 
