@@ -3,11 +3,9 @@ class Cell
   attr_accessor :value, :neighbours
 
 
-  def initialize(neighbours = [])
+  def initialize(neighbours = [], value = 0)
     @neighbours = neighbours
-    # knows its row
-    # knows it column
-    # knows it box
+    @value = value
   end
 
   # returns true if the cell is filled out, false otherwise
@@ -19,14 +17,26 @@ class Cell
     self.value != 0
   end
 
-  def candidates
-    
+  def candidates(puzzle)
+    (1...9).to_a - values_in_neighbours(puzzle).uniq
+  end
+
+  def values_in_neighbours(puzzle)
+    array = []
+    neighbours.each{|neighbour|
+      array << puzzle[neighbour].to_i if puzzle[neighbour].to_i != 0
+    }
+    array.sort
   end
 
   def solve
     # do nothing if solved
     # request the list of candidates and 
-    # get a new value if there's only one possible candidate    
+    # get a new value if there's only one possible candidate
+    if !filled_out?
+      # do something
+      return "Im going to solve myself"
+    end
   end
 
 end
