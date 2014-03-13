@@ -2,12 +2,13 @@ require_relative './cell'
 
 class Grid
   ROWS = (0...81).each_slice(9).to_a
-  attr_reader :cells, :puzzle
+  attr_reader :cells
+  attr_accessor :puzzle
 
   def initialize(initial_values)
     @puzzle = initial_values
     @cells = [] ; i = 0
-    81.times{ @cells << Cell.new([values_in_neighbours(i)],puzzle[i].to_i); i += 1 }
+    81.times{ @cells << Cell.new(values_in_neighbours(i),puzzle[i].to_i); i += 1 }
     @cells = @cells.each_slice(9).to_a
   end
 
@@ -45,19 +46,28 @@ class Grid
     cells.flatten.each {|c| c.solve}
   end
 
+  def update_neighbours
+    an_array = []
+    cells.flatten.each {|c| an_array << c.value}
+    @puzzle = an_array.join.to_s
+    cells.flatten.each_with_index {|cell, i| cell.neighbours = values_in_neighbours(i)}
+  end
+
   def solve
     outstanding_before, looping = cells.flatten.count, false
     while !solved? && !looping
-      try_to_solve # ask each cell to solve itself
+      try_to_solve
+      update_neighbours
       outstanding = cells.flatten.count {|c| !c.filled_out?}
       looping = outstanding_before == outstanding
       outstanding_before = outstanding
     end
-    p cells
   end
 
   def solved?
-    cells.flatten.all? {|cell| cell.value >= 1 }
+    remaining = cells.flatten.count {|c| !c.filled_out?}
+    puts "outstanding = #{remaining}"
+    cells.flatten.all? {|cell| cell.filled_out?}
   end
 
   def inspect

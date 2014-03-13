@@ -51,8 +51,26 @@ describe Grid do
 
     context 'solutions' do
 
+      it "cells can solve themselves" do
+        grid.cells.flatten[72].solve
+        expect(grid.cells.flatten[72].value).to eq(1)
+      end
+
+      it "can find out if there are a cell is filled out" do
+        expect(grid.cells.flatten[72].filled_out?).to eq(false)
+      end
+
       it 'knows if its solved' do
         expect(grid.solved?).to eq(false)
+      end
+
+      it "knows if it is solved" do
+        grid_that_took_too_long = Grid.new((1..81).map{|x| "1"}.join)
+        expect(grid_that_took_too_long.solved?).to eq(true)
+      end
+
+      it "can count how many outstanding cells there are" do
+        expect(grid.cells.flatten.count{|c| !c.filled_out?}).to eq(41)
       end
 
     end
