@@ -51,10 +51,18 @@ describe Grid do
 
     context 'solutions' do
 
-      it ' knows if its solved' do
+      it 'knows if its solved' do
         expect(grid.solved?).to eq(false)
       end
 
+    end
+
+    context 'inspect' do
+      it 'knows what the solved_values are' do
+        grid.inspect
+        # expect(puzzle.length).to eq(81)
+        # expect(grid.inspect.count).to eq(81)
+      end
     end
 
 end

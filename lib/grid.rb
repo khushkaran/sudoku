@@ -55,8 +55,28 @@ class Grid
     self.cells.flatten.all? {|cell| cell.value >= 1 }
   end
 
-  # def inspect
-  #    # iterate over all cells and print the grid
-  # end
+  def inspect
+    solved_values = []
+    cells.flatten.each{|cell|
+      solved_values << cell.value
+    }
+    solved_values
+    i = 0
+    end_values = [0,8,17,26,35,44,53,62,71,80]
+    while i < solved_values.count
+      if end_values.include?(i)
+        puts "\n-------------------------------------" if i == 0
+        print "| "
+        print "#{solved_values[i]} "
+        print "| " if i != 0
+        puts "\n-------------------------------------" if i != 0
+        i += 1
+      else
+        print "| "
+        print "#{solved_values[i]} "
+        i += 1
+      end
+    end
+  end
 
 end

@@ -2,13 +2,11 @@ class Cell
 
   attr_accessor :value, :neighbours
 
-
   def initialize(neighbours = [], value = 0)
     @neighbours = neighbours
     @value = value
   end
 
-  # returns true if the cell is filled out, false otherwise
   def filled_out?
     self.value != 0
   end
