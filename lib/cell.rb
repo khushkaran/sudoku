@@ -23,7 +23,11 @@ class Cell
   def solve
     # do nothing if solved
     # request the list of candidates and 
-    # get a new value if there's only one possible candidate    
+    # get a new value if there's only one possible candidate
+    if !filled_out?
+      # do something
+      return "Im going to solve myself"
+    end
   end
 
 end
