@@ -11,7 +11,7 @@ describe Cell do
     expect(cell.solve).to eq("Im going to solve myself")
   end
 
-  it  does not try to solve itself if it is solved' do
+  it  'does not try to solve itself if it is solved' do
     cell = Cell.new([],4)
     expect(cell.solve).to be_nil
   end
