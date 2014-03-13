@@ -38,7 +38,6 @@ class Grid
   end
 
   def neighbours_of(index)
-    # result = current_box(index) + current_row(index) + current_column(index)
     result = current(BOXES,index) + current(ROWS,index) + current(ROWS.transpose,index)
     result.reject{|neighbour| neighbour == index}.uniq
   end
