@@ -22,4 +22,10 @@ describe Cell do
     expect(cell.solve).to be_nil
   end
 
+  it 'solves itself if there is 1 candidate' do
+    cell = Cell.new([9,8,6,3,7,2,4,5],0)
+    cell.solve
+    expect(cell.value).to eq(1)
+  end
+
 end

@@ -17,11 +17,7 @@ class Cell
   end
 
   def solve
-    # request the list of candidates and 
-    # get a new value if there's only one possible candidate
-    if !filled_out?
-      value = candidates[0] if candidates.count == 1
-    end
+    self.value = candidates[0] if candidates.count == 1 if !filled_out?
   end
 
 end

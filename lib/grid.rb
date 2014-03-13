@@ -3,7 +3,6 @@ require_relative './cell'
 class Grid
   ROWS = (0...81).each_slice(9).to_a
   attr_reader :cells, :puzzle
-  # attr_accessor :puzzle
 
   def initialize(initial_values)
     @puzzle = initial_values
