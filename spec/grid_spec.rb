@@ -20,12 +20,12 @@ describe Grid do
     end
 
     context 'neighbours' do
-      xit "can calculate a neighbour" do
+      it "can calculate a neighbour" do
         expect(grid.neighbours_of(13)).to eq([3,4,5,12,14,21,22,23])
       end
 
       xit 'can calculate another neighbour' do
-        expect(grid.neighbours_of(8)).to eq([])
+        expect(grid.neighbours_of(8)).to eq([6,7,15,16,17,24,25,26])
       end
   end
 

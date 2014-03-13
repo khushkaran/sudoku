@@ -2,8 +2,12 @@ class Cell
 
   attr_accessor :value, :neighbours
 
+
   def initialize(neighbours = [])
     @neighbours = neighbours
+    # knows its row
+    # knows it column
+    # knows it box
   end
 
   # returns true if the cell is filled out, false otherwise
