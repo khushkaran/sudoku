@@ -65,7 +65,7 @@ describe Grid do
       end
 
       it "knows if it is solved" do
-        grid_that_took_too_long = Grid.new((1..81).map{|x| "1"}.join)
+        grid_that_took_too_long = Grid.new("1"*81)
         expect(grid_that_took_too_long.solved?).to eq(true)
       end
 

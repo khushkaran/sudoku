@@ -12,11 +12,11 @@ class Cell
   end
 
   def candidates
-    (1...9).to_a - neighbours
+    (1..9).to_a - neighbours
   end
 
   def solve
-    self.value = candidates[0] if candidates.count == 1 if !filled_out?
+    self.value = candidates[0] if candidates.count == 1 && !filled_out?
   end
 
 end
