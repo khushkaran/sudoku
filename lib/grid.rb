@@ -38,25 +38,14 @@ class Grid
   end
 
   def neighbours_of(index)
-    result = current_box(index) + current_row(index) + current_column(index)
+    # result = current_box(index) + current_row(index) + current_column(index)
+    result = current(BOXES,index) + current(ROWS,index) + current(ROWS.transpose,index)
     result.reject{|neighbour| neighbour == index}.uniq
   end
 
-  def current_box(index)
-    BOXES.each{|box|
-      return box if box.include?(index)
-    }
-  end
-
-  def current_row(index)
-    ROWS.each{|row|
-      return row if row.include?(index)
-    }
-  end
-
-  def current_column(index)
-    ROWS.transpose.each{|column|
-      return column if column.include?(index)
+  def current(array,index)
+    array.each{|element|
+      return element if element.include?(index)
     }
   end
 
