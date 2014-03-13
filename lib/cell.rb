@@ -16,8 +16,16 @@ class Cell
     self.value != 0
   end
 
-  def candidates
-    
+  def candidates(puzzle)
+    (1...9).to_a - values_in_neighbours(puzzle).uniq
+  end
+
+  def values_in_neighbours(puzzle)
+    array = []
+    neighbours.each{|neighbour|
+      array << puzzle[neighbour].to_i if puzzle[neighbour].to_i != 0
+    }
+    array.sort
   end
 
   def solve
