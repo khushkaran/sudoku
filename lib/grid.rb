@@ -41,18 +41,23 @@ class Grid
     array.each{|element| return element if element.include?(index) }
   end
 
+  def try_to_solve
+    cells.flatten.each {|c| c.solve}
+  end
+
   def solve
-    # outstanding_before, looping = SIZE, false
-    # while !solved? && !looping
-    #   try_to_solve # ask each cell to solve itself
-    #   outstanding = @cells.count {|c| c.solved?}
-    #   looping = outstanding_before == outstanding
-    #   outstanding_before = outstanding
-    # end
+    outstanding_before, looping = cells.flatten.count, false
+    while !solved? && !looping
+      try_to_solve # ask each cell to solve itself
+      outstanding = cells.flatten.count {|c| !c.filled_out?}
+      looping = outstanding_before == outstanding
+      outstanding_before = outstanding
+    end
+    p cells
   end
 
   def solved?
-    self.cells.flatten.all? {|cell| cell.value >= 1 }
+    cells.flatten.all? {|cell| cell.value >= 1 }
   end
 
   def inspect

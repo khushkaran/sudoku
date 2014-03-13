@@ -59,6 +59,7 @@ describe Grid do
 
     context 'inspect' do
       it 'knows what the solved_values are' do
+        grid.solve
         grid.inspect
         # expect(puzzle.length).to eq(81)
         # expect(grid.inspect.count).to eq(81)
