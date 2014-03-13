@@ -13,7 +13,9 @@ class Grid
 
   def boxes
     grid_3 = (0...81).each_slice(3).to_a
-    increaser = [0,0,0,6,6,6,12,12,12]; i = 0; boxes = []
+    increaser = [0,0,0,6,6,6,12,12,12]
+    i = 0
+    boxes = []
     while i < 9 do
       first_index = i+increaser[i]
       boxes << grid_3[first_index] + grid_3[first_index+3] + grid_3[first_index+6]
@@ -36,9 +38,7 @@ class Grid
   end
 
   def current(array,index)
-    array.each{|element|
-      return element if element.include?(index)
-    }
+    array.each{|element| return element if element.include?(index) }
   end
 
   def solve
@@ -52,7 +52,7 @@ class Grid
   end
 
   def solved?
-    # a grid if solved if all cells are filled out. Use .all? method
+    self.cells.flatten.all? {|cell| cell.value >= 1 }
   end
 
   # def inspect

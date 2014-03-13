@@ -3,7 +3,7 @@ require "grid"
 describe Grid do
   let(:puzzle) {"015003002000100906270068430490002017501040380003905000900081040860070025037204600"}
   let(:grid) {Grid.new(puzzle)}
-    context 'initialization' do
+  context 'initialization' do
 
       it "should have 81 cells" do
         cells_count = 0
@@ -21,9 +21,10 @@ describe Grid do
         expect(grid.cells[0][1].filled_out?).to eq(true)
         expect(grid.cells[0][1].value).to eq(1)
       end
-    end
+  end
 
     context 'neighbours' do
+
       let(:rows) {[[0,1,2,3,4,5,6,7,8],[9,10,11,12,13,14,15,16,17],[18,19,20,21,22,23,24,25,26],[27,28,29,30,31,32,33,34,35],[36,37,38,39,40,41,42,43,44],[45,46,47,48,49,50,51,52,53],[54,55,56,57,58,59,60,61,62],[63,64,65,66,67,68,69,70,71],[72,73,74,75,76,77,78,79,80]]}
       let(:boxes) {[[0,1,2,9,10,11,18,19,20],[3,4,5,12,13,14,21,22,23],[6,7,8,15,16,17,24,25,26],[27,28,29,36,37,38,45,46,47],[30,31,32,39,40,41,48,49,50],[33,34,35,42,43,44,51,52,53],[54,55,56,63,64,65,72,73,74],[57,58,59,66,67,68,75,76,77],[60,61,62,69,70,71,78,79,80]]}
 
@@ -46,6 +47,14 @@ describe Grid do
       it "knows the values of a cells neighbours" do
         expect(grid.values_in_neighbours(30)).to eq([1,2,4,5,7,9].sort)
       end
-  end
+    end
+
+    context 'solutions' do
+
+      it ' knows if its solved' do
+        expect(grid.solved?).to eq(false)
+      end
+
+    end
 
 end

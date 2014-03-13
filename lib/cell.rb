@@ -2,6 +2,7 @@ class Cell
 
   attr_accessor :value, :neighbours
 
+
   def initialize(neighbours = [], value = 0)
     @neighbours = neighbours
     @value = value
