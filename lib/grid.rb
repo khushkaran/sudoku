@@ -2,11 +2,12 @@ require_relative './cell'
 
 class Grid
   ROWS = (0...81).each_slice(9).to_a
-  attr_reader :cells
+  attr_reader :cells, :puzzle
 
   def initialize(initial_values)
+    @puzzle = initial_values
     @cells = [] ; i = 0
-    81.times{ @cells << Cell.new([neighbours_of(i)],initial_values[i].to_i); i += 1 }
+    81.times{ @cells << Cell.new([values_in_neighbours(i)],puzzle[i].to_i); i += 1 }
     @cells = @cells.each_slice(9).to_a
   end
 
@@ -21,6 +22,14 @@ class Grid
       i += 1
     end
     boxes
+  end
+
+  def values_in_neighbours(index)
+    array = []
+    neighbours_of(index).each{|neighbour|
+      array << puzzle[neighbour].to_i if puzzle[neighbour].to_i != 0
+    }
+    array.uniq.sort
   end
 
   def neighbours_of(index)
@@ -43,7 +52,7 @@ class Grid
   end
 
   def solved?
-    # a grid if solved if all cells are filled out. Use .all? method
+    self.cells.flatten.all? {|cell| cell.value >= 1 }
   end
 
   # def inspect

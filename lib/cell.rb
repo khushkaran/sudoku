@@ -13,19 +13,12 @@ class Cell
     self.value != 0
   end
 
-  def candidates(puzzle)
-    (1...9).to_a - values_in_neighbours(puzzle).uniq
-  end
-
-  def values_in_neighbours(puzzle)
-    array = []
-    neighbours.each{|neighbour|
-      array << puzzle[neighbour].to_i if puzzle[neighbour].to_i != 0
-    }
-    array.sort
+  def candidates
+    (1...9).to_a - neighbours
   end
 
   def solve
+    self.value = candidates[0] if candidates.count == 1 if !filled_out?
   end
 
 end
