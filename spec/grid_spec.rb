@@ -42,6 +42,10 @@ describe Grid do
       it "knows an indexes neighbours" do
         expect(grid.neighbours_of(30)).to eq([31,32,39,40,41,48,49,50,27,28,29,33,34,35,3,12,21,57,66,75])
       end
+
+      it "knows the values of a cells neighbours" do
+        expect(grid.values_in_neighbours(30)).to eq([1,2,4,5,7,9].sort)
+      end
   end
 
 end

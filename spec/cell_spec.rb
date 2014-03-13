@@ -12,16 +12,14 @@ describe Cell do
     expect(cell.solve).to be_nil
   end
 
-  it 'can work out the values in its neighbours' do
-    expect(cell.values_in_neighbours(puzzle)).to eq([5,1,4,3,8,1,9,2,2,5].sort)
-  end
-
   it 'can work out the candidates' do
-    expect(cell.candidates(puzzle)).to eq([6,7])
+    cell = Cell.new([1,2,4,5,7,9],0)
+    expect(cell.candidates).to eq([3,6,8])
   end
 
-  it 'can solve itself if it is empty' do
-    expect(cell.solve).to eq("Im going to solve myself")
+  it 'skips solving itself if there are more than 1 candidate' do
+    cell = Cell.new([1,2,4,5,7,9],0)
+    expect(cell.solve).to be_nil
   end
 
 end
