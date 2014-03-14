@@ -41,10 +41,8 @@ class Grid
     cells.flatten.each {|c| c.solve}
   end
 
-  def update_neighbours
-    an_array = []
-    cells.flatten.each {|c| an_array << c.value}
-    @puzzle = an_array.join.to_s
+  def update_neighbours    
+    self.puzzle = cells.flatten.map {|c| c.value}.join.to_s
     cells.flatten.each_with_index {|cell, i| cell.neighbours = values_in_neighbours_of(i)}
   end
 
