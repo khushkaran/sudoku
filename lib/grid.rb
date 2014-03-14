@@ -12,7 +12,7 @@ class Grid
 
   def create_grid
     @cells = [] ; i = 0
-    81.times{ @cells << Cell.new(values_in_neighbours(i),puzzle[i].to_i); i += 1 }
+    81.times{ @cells << Cell.new(values_in_neighbours_of(i),puzzle[i].to_i); i += 1 }
     @cells = @cells.each_slice(9).to_a
   end
 
@@ -29,12 +29,8 @@ class Grid
     boxes
   end
 
-  def values_in_neighbours(index)
-    array = []
-    unique_neighbours_of(index).each{|neighbour|
-      array << puzzle[neighbour].to_i if puzzle[neighbour].to_i != 0
-    }
-    array.uniq.sort
+  def values_in_neighbours_of(index)
+    unique_neighbours_of(index).map{|neighbour| puzzle[neighbour].to_i}.reject{|neighbour| neighbour == 0}.uniq.sort
   end
 
   def unique_neighbours_of(index)
@@ -57,7 +53,7 @@ class Grid
     an_array = []
     cells.flatten.each {|c| an_array << c.value}
     @puzzle = an_array.join.to_s
-    cells.flatten.each_with_index {|cell, i| cell.neighbours = values_in_neighbours(i)}
+    cells.flatten.each_with_index {|cell, i| cell.neighbours = values_in_neighbours_of(i)}
   end
 
   def solve

@@ -45,7 +45,7 @@ describe Grid do
       end
 
       it "knows the values of a cells neighbours" do
-        expect(grid.values_in_neighbours(30)).to eq([1,2,4,5,7,9].sort)
+        expect(grid.values_in_neighbours_of(30)).to eq([1,2,4,5,7,9].sort)
       end
     end
 
