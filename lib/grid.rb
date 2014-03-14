@@ -31,19 +31,22 @@ class Grid
 
   def values_in_neighbours(index)
     array = []
-    neighbours_of(index).each{|neighbour|
+    unique_neighbours_of(index).each{|neighbour|
       array << puzzle[neighbour].to_i if puzzle[neighbour].to_i != 0
     }
     array.uniq.sort
   end
 
-  def neighbours_of(index)
-    result = current(boxes,index) + current(ROWS,index) + current(ROWS.transpose,index)
-    result.reject{|neighbour| neighbour == index}.uniq
+  def unique_neighbours_of(index)
+    all_neighbours_of(index).reject{|neighbour| neighbour == index}.uniq
+  end
+
+  def all_neighbours_of(index)
+    current(boxes,index) + current(ROWS,index) + current(ROWS.transpose,index)
   end
 
   def current(array,index)
-    array.detect {|box| box.include?(index)}
+    array.detect {|element| element.include?(index)}
   end
 
   def try_to_solve

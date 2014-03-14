@@ -40,8 +40,8 @@ describe Grid do
         expect(grid.current(rows.transpose,30)).to eq([3,12,21,30,39,48,57,66,75])
       end
 
-      it "knows an indexes neighbours" do
-        expect(grid.neighbours_of(30)).to eq([31,32,39,40,41,48,49,50,27,28,29,33,34,35,3,12,21,57,66,75])
+      it "knows the indexes of a neighbours" do
+        expect(grid.unique_neighbours_of(30)).to eq([31,32,39,40,41,48,49,50,27,28,29,33,34,35,3,12,21,57,66,75])
       end
 
       it "knows the values of a cells neighbours" do
