@@ -3,28 +3,23 @@ require "grid"
 describe Grid do
   let(:puzzle) {"015003002000100906270068430490002017501040380003905000900081040860070025037204600"}
   let(:grid) {Grid.new(puzzle)}
+
   context 'initialization' do
+    it "should have 81 cells" do
+      expect(grid.cells.flatten.count).to eq(81)
+    end
 
-      it "should have 81 cells" do
-        cells_count = 0
-        grid.cells.each{|row|
-          cells_count += row.count
-        }
-        expect(cells_count).to eq(81)
-      end
+    it 'should have an unsolved first cell' do
+      expect(grid.cells[0][0].filled_out?).to eq(false)
+    end
 
-      it 'should have an unsolved first cell' do
-        expect(grid.cells[0][0].filled_out?).to eq(false)
-      end
-
-      it 'should have a solved second cell with value 1' do
-        expect(grid.cells[0][1].filled_out?).to eq(true)
-        expect(grid.cells[0][1].value).to eq(1)
-      end
+    it 'should have a solved second cell with value 1' do
+      expect(grid.cells[0][1].filled_out?).to eq(true)
+      expect(grid.cells[0][1].value).to eq(1)
+    end
   end
 
     context 'neighbours' do
-
       let(:rows) {[[0,1,2,3,4,5,6,7,8],[9,10,11,12,13,14,15,16,17],[18,19,20,21,22,23,24,25,26],[27,28,29,30,31,32,33,34,35],[36,37,38,39,40,41,42,43,44],[45,46,47,48,49,50,51,52,53],[54,55,56,57,58,59,60,61,62],[63,64,65,66,67,68,69,70,71],[72,73,74,75,76,77,78,79,80]]}
       let(:boxes) {[[0,1,2,9,10,11,18,19,20],[3,4,5,12,13,14,21,22,23],[6,7,8,15,16,17,24,25,26],[27,28,29,36,37,38,45,46,47],[30,31,32,39,40,41,48,49,50],[33,34,35,42,43,44,51,52,53],[54,55,56,63,64,65,72,73,74],[57,58,59,66,67,68,75,76,77],[60,61,62,69,70,71,78,79,80]]}
 
@@ -82,18 +77,12 @@ describe Grid do
       end
     end
 
-    # context "Puzzles" do
-    #   it "can do another sudoku" do
-    #     grid2 = Grid.new("9,0,0,0,0,2,5,0,0,0,0,0,0,0,0,0,9,7,0,0,0,5,0,0,8,0,0,0,0,0,0,0,0,0,2,0,0,0,7,0,6,0,0,0,4,0,9,5,0,1,0,7,0,0,0,0,8,7,0,0,9,0,0,2,0,0,0,0,0,0,0,1,3,0,0,8,0,0,2,0,0")
-    #     grid2.solve
-    #     grid2.inspect
-    #   end
-
-    #   it "can do another sudoku" do
-    #     grid2 = Grid.new("6,0,0,1,0,8,2,0,3,0,2,0,0,4,0,0,9,0,8,0,3,0,0,5,4,0,0,5,0,4,6,0,7,0,0,9,0,3,0,0,0,0,0,5,0,7,0,0,8,0,3,1,0,2,0,0,1,7,0,0,9,0,6,0,8,0,0,3,0,0,2,0,3,0,2,9,0,4,0,0,5")
-    #     grid2.solve
-    #     grid2.inspect
-    #   end
-    # end
+    context "Puzzles" do
+      it "can do another sudoku" do
+        grid2 = Grid.new("600108203020040090803005400504607009030000050700803102001700906080030020302904005")
+        grid2.solve
+        grid2.inspect
+      end
+    end
 
 end
