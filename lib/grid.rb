@@ -12,8 +12,8 @@ class Grid
   end
 
   def create_grid
-    @cells = [] ; i = 0
-    81.times{ @cells << Cell.new(values_in_neighbours_of(i),puzzle[i].to_i); i += 1 }
+    @cells = []
+    81.times{ |i| @cells << Cell.new(values_in_neighbours_of(i),puzzle[i].to_i); i += 1 }
     @cells = @cells.each_slice(9).to_a
   end
 
@@ -67,9 +67,8 @@ class Grid
       solved_values << cell.value
     }
     solved_values
-    i = 0
     end_values = [0,8,17,26,35,44,53,62,71,80]
-    while i < solved_values.count
+    81.times { |i|
       if end_values.include?(i)
         puts "\n-------------------------------------" if i == 0
         print "| "
@@ -82,7 +81,7 @@ class Grid
         print "#{solved_values[i]} "
         i += 1
       end
-    end
+    }
   end
 
 end
