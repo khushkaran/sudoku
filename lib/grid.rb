@@ -8,13 +8,11 @@ class Grid
 
   def initialize(initial_values)
     @puzzle = initial_values
-    create_grid
+    @cells = create_grid
   end
 
   def create_grid
-    @cells = []
-    81.times{ |i| @cells << Cell.new(values_in_neighbours_of(i),puzzle[i].to_i); i += 1 }
-    @cells = @cells.each_slice(9).to_a
+    (0..80).map{|i| Cell.new(values_in_neighbours_of(i),puzzle[i].to_i)}.each_slice(9).to_a
   end
 
   def boxes
@@ -39,6 +37,7 @@ class Grid
 
   def try_to_solve
     cells.flatten.each {|c| c.solve}
+    update_neighbours
   end
 
   def update_neighbours    
@@ -50,7 +49,6 @@ class Grid
     outstanding_before, looping = cells.flatten.count, false
     while !solved? && !looping
       try_to_solve
-      update_neighbours
       outstanding = cells.flatten.count {|c| !c.filled_out?}
       looping = outstanding_before == outstanding
       outstanding_before = outstanding
