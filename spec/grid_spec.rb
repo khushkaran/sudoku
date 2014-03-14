@@ -76,12 +76,24 @@ describe Grid do
     end
 
     context 'inspect' do
-      it 'knows what the solved_values are' do
+      it 'can solve a puzzle' do
         grid.solve
         grid.inspect
-        # expect(puzzle.length).to eq(81)
-        # expect(grid.inspect.count).to eq(81)
       end
     end
+
+    # context "Puzzles" do
+    #   it "can do another sudoku" do
+    #     grid2 = Grid.new("9,0,0,0,0,2,5,0,0,0,0,0,0,0,0,0,9,7,0,0,0,5,0,0,8,0,0,0,0,0,0,0,0,0,2,0,0,0,7,0,6,0,0,0,4,0,9,5,0,1,0,7,0,0,0,0,8,7,0,0,9,0,0,2,0,0,0,0,0,0,0,1,3,0,0,8,0,0,2,0,0")
+    #     grid2.solve
+    #     grid2.inspect
+    #   end
+
+    #   it "can do another sudoku" do
+    #     grid2 = Grid.new("6,0,0,1,0,8,2,0,3,0,2,0,0,4,0,0,9,0,8,0,3,0,0,5,4,0,0,5,0,4,6,0,7,0,0,9,0,3,0,0,0,0,0,5,0,7,0,0,8,0,3,1,0,2,0,0,1,7,0,0,9,0,6,0,8,0,0,3,0,0,2,0,3,0,2,9,0,4,0,0,5")
+    #     grid2.solve
+    #     grid2.inspect
+    #   end
+    # end
 
 end

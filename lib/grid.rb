@@ -34,13 +34,11 @@ class Grid
   end
 
   def neighbours_of(index)
-
     result = current(boxes,index) + current(ROWS,index) + current(ROWS.transpose,index)
     result.reject{|neighbour| neighbour == index}.uniq
   end
 
   def current(array,index)
-    # array.each{|element| return element if element.include?(index) }
     array.detect {|box| box.include?(index)}
   end
 
@@ -67,8 +65,6 @@ class Grid
   end
 
   def solved?
-    remaining = cells.flatten.count {|c| !c.filled_out?}
-    puts "outstanding = #{remaining}"
     cells.flatten.all? {|cell| cell.filled_out?}
   end
 
