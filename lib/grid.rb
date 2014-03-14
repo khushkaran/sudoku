@@ -7,6 +7,10 @@ class Grid
 
   def initialize(initial_values)
     @puzzle = initial_values
+    create_grid
+  end
+
+  def create_grid
     @cells = [] ; i = 0
     81.times{ @cells << Cell.new(values_in_neighbours(i),puzzle[i].to_i); i += 1 }
     @cells = @cells.each_slice(9).to_a
