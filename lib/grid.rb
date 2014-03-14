@@ -2,6 +2,7 @@ require_relative './cell'
 
 class Grid
   ROWS = (0..80).each_slice(9).to_a
+  BOX_ROWS = (0..80).each_slice(3).to_a
   attr_reader :cells
   attr_accessor :puzzle
 
@@ -17,13 +18,7 @@ class Grid
   end
 
   def boxes
-    grid_3 = (0..80).each_slice(3).to_a
-    boxes = []
-    9.times do |i|
-      first_index = i+[0,0,0,6,6,6,12,12,12][i]
-      boxes << grid_3[first_index] + grid_3[first_index+3] + grid_3[first_index+6]
-    end
-    boxes
+    [0,0,0,6,6,6,12,12,12].map.with_index{|e, i| BOX_ROWS[i+e] + BOX_ROWS[i+e+3] + BOX_ROWS[i+e+6]}
   end
 
   def values_in_neighbours_of(index)
