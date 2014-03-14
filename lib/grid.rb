@@ -1,7 +1,7 @@
 require_relative './cell'
 
 class Grid
-  ROWS = (0...81).each_slice(9).to_a
+  ROWS = (0..80).each_slice(9).to_a
   attr_reader :cells
   attr_accessor :puzzle
 
@@ -17,14 +17,11 @@ class Grid
   end
 
   def boxes
-    grid_3 = (0...81).each_slice(3).to_a
-    increaser = [0,0,0,6,6,6,12,12,12]
-    i = 0
+    grid_3 = (0..80).each_slice(3).to_a
     boxes = []
-    while i < 9 do
-      first_index = i+increaser[i]
+    9.times do |i|
+      first_index = i+[0,0,0,6,6,6,12,12,12][i]
       boxes << grid_3[first_index] + grid_3[first_index+3] + grid_3[first_index+6]
-      i += 1
     end
     boxes
   end
