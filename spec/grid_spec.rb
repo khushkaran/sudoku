@@ -83,6 +83,9 @@ describe Grid do
         grid2.solve
         grid2.inspect
       end
+
+      it "can solve a hard sudoku" do
+      end
     end
 
 end
