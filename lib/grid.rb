@@ -61,23 +61,22 @@ class Grid
     cells.flatten.all? {|cell| cell.filled_out?}
   end
 
+  def end_value_print(i, solved_values)
+    puts "\n-------------------------------------" if i == 0
+    print "| "
+    print "#{solved_values[i]} "
+    print "| " if i != 0
+    puts "\n-------------------------------------" if i != 0
+  end
+
+  def non_end_value_print(i, solved_values)
+    print "| "
+    print "#{solved_values[i]} "
+  end
+
   def inspect
     solved_values = cells.flatten.map{|cell| cell.value }
-    end_values = [0,8,17,26,35,44,53,62,71,80]
-    81.times { |i|
-      if end_values.include?(i)
-        puts "\n-------------------------------------" if i == 0
-        print "| "
-        print "#{solved_values[i]} "
-        print "| " if i != 0
-        puts "\n-------------------------------------" if i != 0
-        i += 1
-      else
-        print "| "
-        print "#{solved_values[i]} "
-        i += 1
-      end
-    }
+    81.times { |i| [0,8,17,26,35,44,53,62,71,80].include?(i) ? end_value_print(i,solved_values) : non_end_value_print(i,solved_values) }
   end
 
 end
