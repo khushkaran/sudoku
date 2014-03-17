@@ -19,8 +19,8 @@ class Cell
     self.value = candidates[0] if candidates.count == 1 && !filled_out?
   end
 
-  def assume(candidate)
-    self.value = candidate
-  end
+  # def assume(candidate)
+  #   self.value = candidate
+  # end
 
 end

@@ -55,13 +55,13 @@ describe Grid do
         expect(grid.cells.flatten[72].filled_out?).to eq(false)
       end
 
-      it 'knows if its solved' do
+      it 'knows if it is NOT solved' do
         expect(grid.solved?).to eq(false)
       end
 
       it "knows if it is solved" do
-        grid_that_took_too_long = Grid.new("123456789"*9)
-        expect(grid_that_took_too_long.solved?).to eq(true)
+        a_grid = Grid.new("615493872348127956279568431496832517521746389783915264952681743864379125137254698")
+        expect(a_grid.solved?).to eq(true)
       end
 
       it "can count how many outstanding cells there are" do
@@ -73,34 +73,34 @@ describe Grid do
     context 'inspect' do
       it 'can solve a puzzle' do
         grid.solve
-        # grid.inspect
+        grid.inspect
       end
     end
 
-    context "Hard Puzzles" do
-      let(:grid_hard){Grid.new("800000000003600000070090200050007000000045700000100030001000068008500010090000400")}
-      it "can get first blank cell" do
-        expect(grid_hard.blank_cell.value).to eq(0)
-      end
+    # context "Hard Puzzles" do
+    #   let(:grid_hard){Grid.new("800000000003600000070090200050007000000045700000100030001000068008500010090000400")}
+    #   it "can get first blank cell" do
+    #     expect(grid_hard.blank_cell.value).to eq(0)
+    #   end
 
-      it "can solve a hard sudoku" do
-        grid_hard.solve
-        # grid_hard.inspect
-      end
+    #   it "can solve a hard sudoku" do
+    #     grid_hard.solve
+    #     grid_hard.inspect
+    #   end
 
-      it "can solve another hard sudoku" do
-        grid_hard = Grid.new("900002500000000097000500800000000020007060004095010700008700900200000001300800200")
-        grid_hard.solve
-        grid_hard.inspect
-      end
-    end
+    #   it "can solve another hard sudoku" do
+    #     grid_hard = Grid.new("900002500000000097000500800000000020007060004095010700008700900200000001300800200")
+    #     grid_hard.solve
+    #     # grid_hard.inspect
+    #   end
+    # end
 
-    context "Puzzles" do
-      it "can do another sudoku" do
-        grid2 = Grid.new("600108203020040090803005400504607009030000050700803102001700906080030020302904005")
-        grid2.solve
-        #grid2.inspect
-      end
-    end
+    # context "Puzzles" do
+    #   it "can do another sudoku" do
+    #     grid2 = Grid.new("600108203020040090803005400504607009030000050700803102001700906080030020302904005")
+    #     grid2.solve
+    #     #grid2.inspect
+    #   end
+    # end
 
 end

@@ -43,72 +43,32 @@ class Grid
       looping = outstanding_before == outstanding
       outstanding_before = outstanding
     end
-    try_harder unless solved?
+    # try_harder unless solved?
   end
 
-  def blank_cell
-    cells.flatten.select{|c| c.value == 0}[0]# select the first unsolved cell
-    # by definition, this unsolved cell will have 
-    # several possible candidate values
-    # Let's explore all of them
-  end
+#   def blank_cell
+#     cells.flatten.select{|c| c.value == 0}.first# select the first unsolved cell
+#     # by definition, this unsolved cell will have 
+#     # several possible candidate values
+#     # Let's explore all of them
+#   end
 
-  def replicate
-    Grid.new(updated_puzzle)
-  end
+#   def replicate
+#     Grid.new(updated_puzzle)
+#   end
 
-  def steal_solution(board)
-    @cells = board.cells
-  end
+#   def steal_solution(board)
+#     @cells = board.cells
+#   end
 
-  def try_harder
-  blank_cell.candidates.each do |candidate|
-    # let this cell assume this value (we're guessing)
-    blank_cell.assume(candidate)
-
-    # the key part: we're replicating the board to create
-    # the same board but with the value in the 
-    # blank_cell fixed
-    # It should be a new instance of the Grid class
-    # that will be initialised with the current grid
-    board = replicate # you need to write this method
-
-    # and now let's see if this grid has a solution
-    # This is the recursive bit
-    board.solve
-
-    # if it does, then we've got a winner
-    # Let's steal the solution from there
-    # and pretend we found it ourselves :)
-    # Since one of the guesses for blank_cell will be correct
-    # one of the boards will actually be solved
-    # If none are solved, it means we've got an incorrect
-    # guess somewhere up the stack trace
-    steal_solution(board) and return if board.solved?
-
-    # puzzle 1
-    #ln 1
-    #ln 2
-    #ln 3 - 2 6s
-    #ln 4 - 2 5s
-    #ln 5 - 2 2s
-    #ln 6 - 2 2s && 2 8s
-    #ln 7 - 2 5s
-    #ln 8
-    #ln 9 - 2 7s
-
-    # puzzle 2
-    #ln 1 - 2 6s
-    #ln 2 - 2 3s
-    #ln 3 - 2 6s && 2 9s
-    #ln 4 - 3 4s
-    #ln 5 - 
-    #ln 6 - 
-    #ln 7 - 
-    #ln 8 - 2 5s
-    #ln 9 - 
-  end
-end
+#   def try_harder
+#   blank_cell.candidates.each do |candidate|
+#     blank_cell.assume(candidate)
+#     board = replicate
+#     board.solve
+#     steal_solution(board) and return if board.solved?
+#   end
+# end
 
   def solved?
     cells.flatten.all? {|cell| cell.filled_out?}
@@ -121,7 +81,8 @@ end
   end
 
   def solved_values
-    cells.flatten.map{|cell| cell.value }.reject {|e| e == 0}
+    cells.flatten.map{|cell| ( cell.value == 0 ? " " : cell.value)  }
+     #.reject {|e| e == 0}
   end
 
   def inspect
