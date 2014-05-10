@@ -1,4 +1,4 @@
-Sudoku
+Sudoku [![Code Climate](https://codeclimate.com/github/khushkaran/sudoku.png)](https://codeclimate.com/github/khushkaran/sudoku)
 --
 Week 4 project @makersacademy, set by @shadchnev, was to
 develop a Sudoku solver. It needs to be able to solve the
